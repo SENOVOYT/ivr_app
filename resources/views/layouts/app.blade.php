@@ -33,9 +33,9 @@
        
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900 ">
-            <div></div>
+            
             @livewire('navigation-menu')
-
+            
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow dark:bg-gray-800">
@@ -51,6 +51,8 @@
             <main>
                 {{ $slot }}
             </main>
+            
+            
         </div>
 
         @stack('models')

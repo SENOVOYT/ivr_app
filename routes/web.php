@@ -43,16 +43,14 @@ Route::middleware([
     
 ])->group(function () {
 
-    Route::group(['middleware' => ['permission:view_dashboard']], function () {
-        //
+    
+        //Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-    });
+    
 
-    //Permissions
-    Route::group(['middleware' => ['permission:user_management_access']], function () {
-        //
+        //Permissions
         Route::group(['middleware' => ['permission:user_create']], function () {
             //
 
@@ -71,11 +69,7 @@ Route::middleware([
             //
 
         });
-        Route::group(['middleware' => ['permission:user_access']], function () {
-            //
-
-        });
-    });
+    
 
 
 });
