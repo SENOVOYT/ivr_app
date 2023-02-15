@@ -52,7 +52,6 @@
                 {{ $slot }}
             </main>
             
-            
         </div>
 
         @stack('models')

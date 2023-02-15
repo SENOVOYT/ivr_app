@@ -48,6 +48,9 @@ Route::middleware([
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+        Route::get('/editsidebar', function () {
+            return view('edit-sidebar');
+        })->name('editsidebar');
     
 
         //Permissions
