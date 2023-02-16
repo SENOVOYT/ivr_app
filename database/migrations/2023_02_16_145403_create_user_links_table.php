@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nav_links', function (Blueprint $table) {
+        Schema::create('user_links', function (Blueprint $table) {
             $table->id();
-            $table->integer('permission_id')->unsigned();
-            $table->string('link');
             $table->timestamps();
-            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nav_links');
+        Schema::dropIfExists('user_links');
     }
 };

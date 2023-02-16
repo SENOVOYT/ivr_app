@@ -52,7 +52,7 @@ Route::middleware([
             return view('edit-sidebar');
         })->name('editsidebar');
     
-
+        Route::get('/search',[\App\Http\Controllers\Controller::class, 'search']);
         //Permissions
         Route::group(['middleware' => ['permission:user_create']], function () {
             //

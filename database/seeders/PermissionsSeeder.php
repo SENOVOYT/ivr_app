@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\nav_links;
+use App\Models\PermissionsLinks;
 use App\Models\roles;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -80,7 +80,7 @@ class PermissionsSeeder extends Seeder
                 'name' => $permissions['permissions']
             ])->id;
             if(isset($permissions['link'])&&!empty($permissions['link'])){
-                nav_links::create([
+                PermissionsLinks::create([
                     'permission_id' => $id_permission,
                     'link' => $permissions['link']
                 ]);
@@ -91,13 +91,13 @@ class PermissionsSeeder extends Seeder
         //gets all permissions via Gate::before rule: see AuthServiceProvider
         Role::create(['name' => 'superuser']);
 
-        Role::create(['name' => 'administrator']);
-        $role=Role::create(['name' => 'supervisor']);
+        $role=Role::create(['name' => 'administrator']);
+        Role::create(['name' => 'supervisor']);
 
         Role::create(['name' => 'customer']);
 
         $userPermissions = [
-            'view_dashboard',
+            'view_log',
         ];
 
         foreach ( $userPermissions as $permissions ){

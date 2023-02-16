@@ -75,7 +75,7 @@
               
 
                 <label for="icon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an Link</label>
-                <input type="text" autocomplete="off" id="search_icon" class="shadow-sm mb-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Search for a Link">
+                <input type="text" autocomplete="off" id="search" class="shadow-sm mb-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Search for a Link">
   
                 <select multiple id="icon" class="grid-cols-5 grid bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   <option selected>Choose icon</option>
@@ -121,7 +121,23 @@
         </div>
     </div>
 
+<script>
+    
+$('#search').on('keyup',function(){
+$value=$(this).val();
+$.ajax({
+    type : 'get',
+    url : '{{URL::to('search')}}',
+    data:{'search':$value},
+    success:function(data){
+    $('#icon').html(data); }
+});
+})
 
+
+$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+
+</script>
 
 
 
