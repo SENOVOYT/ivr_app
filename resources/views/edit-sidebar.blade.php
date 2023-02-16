@@ -121,23 +121,22 @@
         </div>
     </div>
 
-<script>
-    
-$('#search').on('keyup',function(){
-$value=$(this).val();
-$.ajax({
-    type : 'get',
-    url : '{{URL::to('search')}}',
-    data:{'search':$value},
-    success:function(data){
-    $('#icon').html(data); }
-});
-})
+    <script type="text/javascript">
 
-
-$.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
-
-</script>
+        $('#search').on('keyup',function(){
+        $value=$(this).val();
+        $.ajax({
+            type : 'get',
+            url : '{{URL::to('search')}}',
+            data:{'search':$value},
+            success:function(data){
+            $('select').html(data); }
+        });
+        })
+    </script>
+    <script type="text/javascript">
+    $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+    </script>
 
 
 

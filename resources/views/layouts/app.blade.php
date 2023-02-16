@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="icon" type="image/x-icon" href="{{URL::asset('/image/favicon.ico')}}">
         <link rel="stylesheet" href="{{ url('flowbite/flowbite.min.css') }}" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         
         <script>
             // On page load or when changing themes, best to add inline in `head` to avoid FOUC
