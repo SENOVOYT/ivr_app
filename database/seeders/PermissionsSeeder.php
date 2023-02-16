@@ -76,13 +76,15 @@ class PermissionsSeeder extends Seeder
                       
         ];
         foreach ($permissions as $permissions){
-            $id_permission=Permission::create([
-                'name' => $permissions['permissions']
-            ])->id;
+            
             if(isset($permissions['link'])&&!empty($permissions['link'])){
-                PermissionsLinks::create([
-                    'permission_id' => $id_permission,
+                Permission::create([
+                    'name' => $permissions['permissions'],
                     'link' => $permissions['link']
+                ]);
+            }else{
+                Permission::create([
+                    'name' => $permissions['permissions']
                 ]);
             }
 
