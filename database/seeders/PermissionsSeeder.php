@@ -91,17 +91,17 @@ class PermissionsSeeder extends Seeder
         //gets all permissions via Gate::before rule: see AuthServiceProvider
         Role::create(['name' => 'superuser']);
 
-        $role=Role::create(['name' => 'administrator']);
+        $administrator=Role::create(['name' => 'administrator']);
         Role::create(['name' => 'supervisor']);
 
         Role::create(['name' => 'customer']);
 
-        $userPermissions = [
+        $administratorPermissions = [
             'view_log',
         ];
 
-        foreach ( $userPermissions as $permissions ){
-            $role->givePermissionTo($permissions);
+        foreach ( $administratorPermissions as $permissions ){
+            $administrator->givePermissionTo($permissions);
         }
 
 
