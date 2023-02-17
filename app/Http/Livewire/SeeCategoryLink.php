@@ -15,6 +15,6 @@ class SeeCategoryLink extends ModalComponent
      */
     public static function modalMaxWidth(): string
     {
-        return 'xl';
+        return '7xl';
     }
 }

@@ -1,4 +1,4 @@
-<div class="border-2 dark:border-gray-600 rounded-md">
+<div class="border-2  dark:border-gray-600 rounded-md">
                         <h3 class="dark:text-white my-4 mx-4">Category Layout</h1>
                         <ul  wire:sortable="updateuser_categories" class=" m-2 items-center overflow-y-auto h-96 ">
                             @foreach ( $user_categories as $categories )
@@ -10,7 +10,7 @@
                                         {{ $categories->category_name }}
                                     </div>
                                     
-                                     <div class=" ml-auto items-end gap-1 flex">
+                                     <div class=" ml-auto items-end gap-1  flex">
                                         <a onclick="Livewire.emit('openModal', 'see-category-link')" class=" text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 fill-green-600 w-5 rounded-md " fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
                                         </a>
