@@ -9,13 +9,23 @@ use Livewire\Component;
 class SideBar extends Component
 {
     public $user_id;
+    public $show;
     protected $listeners = ['refreshsidebar' => '$refresh'];
+    public $sidebar;
 
     public function render()
     {
         $this->user_id = Auth::user()->getId();
-        $sidebar=DB::table('user_categories')->where('user',$this->user_id)->orderBy('position')->get();
+        $this->sidebar=DB::table('user_categories')->where('user',$this->user_id)->orderBy('position')->get();
         
-        return view('livewire.side-bar',['sidebar' => $sidebar]);
+        return view('livewire.side-bar',['sidebar' => $this->sidebar]);
+    }
+    public function show($id){
+        if($this->show==$id){
+            $this->show=null;
+        }else{
+            $this->show=$id;
+        }
+        
     }
 }

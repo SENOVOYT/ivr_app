@@ -37,6 +37,7 @@ class CreateCategory extends Component
         $this->user_id=null;
         session()->flash('message_category_success', '1');
         $this->emit('refreshCategoryLayout');
+        $this->emit('refreshsidebar');
 
     }
     public function render()
