@@ -9,7 +9,7 @@ use Livewire\Component;
 class SideBar extends Component
 {
     public $user_id;
-    public $show;
+    public $show=null;
     protected $listeners = ['refreshsidebar' => '$refresh'];
     public $sidebar;
 
