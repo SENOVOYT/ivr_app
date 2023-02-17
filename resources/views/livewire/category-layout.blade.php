@@ -1,10 +1,13 @@
 <div class="border-2 dark:border-gray-600 rounded-md">
                         <h3 class="dark:text-white my-4 mx-4">Category Layout</h1>
-                        <ul class=" m-2 items-center overflow-y-auto h-96 ">
-                            <li class=" m-1 px-4 py-2 border-b rounded-t-lg text-sm font-medium dark:hover:bg-gray-500 text-gray-900 bg-white border rounded-lg   dark:bg-gray-600 dark:border-gray-600 dark:text-white">
+                        <ul  wire:sortable="updateuser_categories" class=" m-2 items-center overflow-y-auto h-96 ">
+                            @foreach ( $user_categories as $categories )
+                                
+                            
+                            <li wire:sortable.item="{{ $categories->id }}" wire:key="task-{{ $categories->id }}" class=" m-1 px-4 py-2 border-b rounded-t-lg text-sm font-medium dark:hover:bg-gray-500 text-gray-900 bg-white border rounded-lg   dark:bg-gray-600 dark:border-gray-600 dark:text-white">
                                 <div class=" flex items-end gap-1 ">
                                     <div class="">
-                                        driansbdsbyds sd sd  sdsubusbbsds
+                                        {{ $categories->category_name }}
                                     </div>
                                     
                                      <div class=" items-end gap-1 ml-1 flex">
@@ -16,6 +19,7 @@
                             
                                 </div> 
                             </li>
+                            @endforeach
 
                            
                             

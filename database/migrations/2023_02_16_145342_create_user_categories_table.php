@@ -16,11 +16,9 @@ return new class extends Migration
         Schema::create('user_categories', function (Blueprint $table) {
             $table->id();
             $table->string('category_name');
-            $table->integer('icon')->unsigned();
+            $table->string('icon')->nullable();
             $table->integer('user')->unsigned();
             $table->integer('position');
-            
-            $table->foreign('icon')->references('id')->on('icons')->onDelete('cascade');
             $table->foreign('user')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
