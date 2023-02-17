@@ -106,15 +106,6 @@
               </a>
            </li>
            <livewire:side-bar>
-          
-        
-           
-           
-       
-   
-
-           
-          
           </div>
         </ul>
         

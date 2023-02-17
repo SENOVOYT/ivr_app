@@ -2,7 +2,7 @@
     <form wire:submit.prevent="save" class="m-2 mb-2">
         <div class="mb-6">
           <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category Name</label>
-          <input wire:model='category' type="text" autocomplete="off" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Category Name" required>
+          <input wire:model.lazy='category' type="text" autocomplete="off" id="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Category Name" required>
         </div>
 
        <input wire:model='user_id' type="hidden" value="{{ Auth::user()->getId()}}">

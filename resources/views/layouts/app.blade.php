@@ -7,11 +7,6 @@
         <link rel="icon" type="image/x-icon" href="{{URL::asset('/image/favicon.ico')}}">
         <link rel="stylesheet" href="{{ url('flowbite/flowbite.min.css') }}" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-                <!-- Alpine v3 -->
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-        <!-- Focus plugin -->
-        <script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
         
         <script>
             // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -63,6 +58,7 @@
         @stack('models')
 
         @livewireScripts
+        @livewire('livewire-ui-modal')
         
         @yield('scripts')
         <script src="{{ url('flowbite/flowbite.js') }}" type="text/javascript"></script>
@@ -110,6 +106,6 @@
         </script>
         <script src="https://cdn.jsdelivr.net/gh/livewire/sortable@v0.x.x/dist/livewire-sortable.js"></script>
         </div>
-        @livewire('livewire-ui-modal')
+        
     </body>
 </html>
