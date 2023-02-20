@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserLinks;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
 
@@ -15,7 +16,7 @@ class CreateCustomLink extends Component
     public $links=[];
     public $user_id =null;
     public $custom_link_name=null;
-    public $link_name="";
+    public $link_name=[];
 
     protected $rules = [
         'customlink' => 'required|string|min:6|max:500',
@@ -50,24 +51,60 @@ class CreateCustomLink extends Component
             return view('livewire.create-custom-link');
         }
     }
+
+
+
     public function save(){
+
+
+        if(count($this->link_name)>1){
+            
+            session()->flash('message_customlink_validator_error', "select only one link");
+            
+            $this->emit('message_customlink_validator_error');
+            return 0;
+        }
+        
+
+        $validator = Validator::make([
+            'custom_link_name'=>$this->custom_link_name,
+            'link_name' => $this->link_name[0],
+        ],[
+            'custom_link_name' => ['required', 'string', 'min:3','max:22'],
+            'link_name' => ['required', 'integer',],
+            
+        ]);
+        
+        if ($validator->fails()) {
+            
+            $error=$validator->errors();
+            $collection="";
+            foreach($error->all() as $error){
+                $collection.=$error.' ';
+            }
+            session()->flash('message_customlink_validator_error', $collection);
+            $this->emit('message_customlink_validator_error');
+            return 0;
+        }
+        dd();
+
         $this->user_id = Auth::user()->getId();
         $notunique=DB::table('user_links')->where('user',$this->user_id)->where('custom_link_name',$this->custom_link_name)->first();
         if($notunique){
-            $this->custom_link_name=null;
-            $this->user_id=null;
-            session()->flash('message_customLink_name_error', '1');
+            
+            $this->emit('existcustomlink');
             return 0;
         }
         $last_id=DB::table('user_links')->where('user',$this->user_id)->latest('position')->first();
         UserLinks::create([
             'user' => $this->user_id,
             'custom_link_name' => $this->custom_link_name,
-            'position' => $last_id? $last_id->position + 1 : 1
+            'position' => $last_id? $last_id->position + 1 : 1,
+            'link' => $this->link_name[0]
         ]);
         $this->custom_link_name=null;
         $this->user_id=null;
-        session()->flash('message_customLink_success', '1');
+        $this->emit('savedcustomlink');
 
     }
 }
