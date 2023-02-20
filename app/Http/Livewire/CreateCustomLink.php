@@ -60,7 +60,7 @@ class CreateCustomLink extends Component
         if(count($this->link_name)>1){
             
             session()->flash('message_customlink_validator_error', "select only one link");
-            
+            $this->link_name="";
             $this->emit('message_customlink_validator_error');
             return 0;
         }
@@ -86,7 +86,6 @@ class CreateCustomLink extends Component
             $this->emit('message_customlink_validator_error');
             return 0;
         }
-        dd();
 
         $this->user_id = Auth::user()->getId();
         $notunique=DB::table('user_links')->where('user',$this->user_id)->where('custom_link_name',$this->custom_link_name)->first();
@@ -104,6 +103,9 @@ class CreateCustomLink extends Component
         ]);
         $this->custom_link_name=null;
         $this->user_id=null;
+        $this->link_name="";
+        $this->links=[];
+        $this->search=null;
         $this->emit('savedcustomlink');
 
     }
