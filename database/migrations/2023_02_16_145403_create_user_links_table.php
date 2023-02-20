@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_links', function (Blueprint $table) {
             $table->id();
             $table->string('custom_link_name');
-            $table->integer('position');
+            $table->integer('position')->nullable();
             $table->integer('category')->nullable()->unsigned();
             $table->integer('user')->unsigned();
             $table->integer('link')->unsigned();

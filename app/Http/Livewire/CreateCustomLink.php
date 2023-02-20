@@ -98,7 +98,6 @@ class CreateCustomLink extends Component
         UserLinks::create([
             'user' => $this->user_id,
             'custom_link_name' => $this->custom_link_name,
-            'position' => $last_id? $last_id->position + 1 : 1,
             'link' => $this->link_name[0]
         ]);
         $this->custom_link_name=null;
