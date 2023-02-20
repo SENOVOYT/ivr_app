@@ -22,9 +22,11 @@ class CreateCustomLink extends Component
             ->limit(10)
             ->get();
             $user=User::find(Auth::user()->getId());
-            foreach( $this->links as $link ){
-                if((!(auth()->user()->hasPermissionTo($link['name'])))&&(!($user->hasrole('superuserpermission link access')))){
-                    dd($link['name']);
+            
+            foreach( $this->links as $key => $link ){
+                
+                if((!(auth()->user()->hasPermissionTo($link['name'])))&&(!($user->hasrole('superuser')))){
+                    unset($this->links[$key]);
                 }
             }
 
