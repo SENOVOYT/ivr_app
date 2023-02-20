@@ -29,9 +29,6 @@ class CreateCustomLink extends Component
                     unset($this->links[$key]);
                 }
             }
-
-
-
             return view('livewire.create-custom-link',['link' => $this->links]);
         }
     }
