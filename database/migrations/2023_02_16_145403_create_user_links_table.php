@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('custom_link_name');
             $table->integer('position');
-            $table->integer('category')->unsigned();
+            $table->integer('category')->nullable()->unsigned();
+            $table->integer('user')->unsigned();
             $table->integer('link')->unsigned();
             
-            $table->foreign('category')->references('id')->on('user_categories')->onDelete('cascade');
+            $table->foreign('category')->references('id')->on('user_categories');
             $table->foreign('link')->references('id')->on('permissions')->onDelete('cascade');
             $table->timestamps();
         });
