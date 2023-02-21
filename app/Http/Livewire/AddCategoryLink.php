@@ -85,15 +85,16 @@ class AddCategoryLink extends ModalComponent
         ->where('user',$this->user_id)
         ->latest('position')
         ->first();
-        
+
         UserLinks::where('id',$this->addlink_name[0])
         ->update([
             'category' => $this->category,
             'position' => $last_id? $last_id->position + 1 : 1
 
         ]);
-        $this->emit('addedlink'.$this->category);
-        $this->closeModal();
+        $this->addsearch="";
+        $this->emit('addedlink');
+        
         
 
 
