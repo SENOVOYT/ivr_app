@@ -9,17 +9,18 @@ use Livewire\Component;
 
 class CategoryLayout extends Component
 {
-    public $user_id;
     protected $listeners = ['refreshCategoryLayout' => '$refresh'];
+    public $user_categories;
     public function render()
     {
-        $this->user_id = Auth::user()->getId();
-        $user_categories=DB::table('user_categories')->where('user',$this->user_id)->orderBy('position')->get();
-        return view('livewire.category-layout',['user_categories' => $user_categories]);
+        
+        $this->user_categories=UserCategory::orderBy('position')->get();
+        return view('livewire.category-layout');
     }
-    public function updateuser_categories($categories){       
-        foreach( $categories as $categorie ){
-            UserCategory::find($categorie['value'])->update(['position'=>$categorie['order']]);
+    public function updateuser_categories($categories){    
+
+        foreach( $categories as $category ){
+            UserCategory::find($category['value'])->update(['position'=>$category['order']]);
         }
         $this->emit('refreshsidebar');
     }

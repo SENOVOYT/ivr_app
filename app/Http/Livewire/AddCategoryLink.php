@@ -12,9 +12,8 @@ use LivewireUI\Modal\ModalComponent;
 
 class AddCategoryLink extends ModalComponent
 {
-    public $addsearch=null;
+    public $addsearch='';
     public $addlinks=[];
-    public $user_id =null;
     public $addlink_name=[];
     public $category;
     public function mount($category)
@@ -24,10 +23,9 @@ class AddCategoryLink extends ModalComponent
     }
     public function render()
     {
-        if($this->addsearch==null || $this->addsearch==''){
+        if($this->addsearch==''){
             $this->addlinks=[];
             $this->addlink_name="";
-            
             return view('livewire.add-category-link');
             
         }else{
@@ -36,16 +34,16 @@ class AddCategoryLink extends ModalComponent
             ->where('category', null)
             ->limit(15)
             ->get();
+
             if(count($this->addlinks)<1)
             {
                 $this->addlink_name="";
                 $this->addlinks=[];
             }
-        return view('livewire.add-category-link');
+            return view('livewire.add-category-link');
         }
     }
     public function save(){
-        $this->user_id=Auth::user()->getId();
 
         if(count($this->addlink_name)>1){
             
@@ -74,15 +72,15 @@ class AddCategoryLink extends ModalComponent
             $this->emit('message_customlinkadd_validator_error');
             return 0;
         }
+
         $id=UserLinks::where('id',$this->addlink_name[0])->get();
         if(!(count($id)==1)){
             session()->flash('message_customlinkadd_validator_error', 'Invalid link name');
             $this->emit('message_customlinkadd_validator_error');
             return 0;
         }
-        $last_id=DB::table('user_links')
-        ->where('category',$this->category)
-        ->where('user',$this->user_id)
+
+        $last_id=UserLinks::where('category',$this->category)
         ->latest('position')
         ->first();
 
@@ -94,10 +92,5 @@ class AddCategoryLink extends ModalComponent
         ]);
         $this->addsearch="";
         $this->emit('addedlink');
-        
-        
-
-
-
     }
 }

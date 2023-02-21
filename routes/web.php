@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\RestedController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,38 +23,29 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'auth',
-])->group(function () {
-    ////////////////////start of rested routes
-    Route::get('/user/rested/update', function () {
-        return view('rested');
-    })->name('user.rested.update');
-
-    Route::post('/user/rested/process', [
-        \App\Http\Controllers\rested::class,'update_rest'
-    ])->name('user.rested.process');
-    //////////////////////end of rested routes
-});
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-    'auth',
-    'rested'
-    
+    'auth'  
 ])->group(function () {
 
-    
+    ////////////////////start of rested routes ///////////////////////////////////////////////////////////////////
+    Route::get('/user/rested/update', [ RestedController::class, 'index' ] )->name('user.rested.update');
+
+    Route::post('/user/rested/process', [ RestedController::class, 'update_rest' ] )->name('user.rested.process');
+    //////////////////////end of rested routes////////////////////////////////////////////////////////////////////
+
+    Route::middleware([
+        'rested'
+    ])->group(function () {
+
+
         //Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
+
         Route::get('/editsidebar', function () {
             return view('edit-sidebar');
         })->name('editsidebar');
     
-        Route::get('/search',[\App\Http\Controllers\Controller::class, 'search']);
         //Permissions
         Route::group(['middleware' => ['permission:user_create']], function () {
             //
@@ -72,7 +65,9 @@ Route::middleware([
             //
 
         });
-    
 
 
+
+
+    });
 });

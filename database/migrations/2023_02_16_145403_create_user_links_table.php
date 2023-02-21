@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('custom_link_name');
             $table->integer('position')->nullable();
             $table->integer('category')->nullable()->unsigned();
-            $table->integer('user')->unsigned();
             $table->integer('link')->unsigned();
             
             $table->foreign('category')->references('id')->on('user_categories');
