@@ -2,12 +2,21 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\UserLinks;
 use LivewireUI\Modal\ModalComponent;
 
 class SeeCategoryLink extends ModalComponent
 {
+    public $category;
+    public $link;
+
+    public function mount($category)
+    {
+        $this->category=$category;
+    }
     public function render()
     {
+        $this->link=UserLinks::where('category',$this->category)->get();
         return view('livewire.see-category-link');
     }
     /**
