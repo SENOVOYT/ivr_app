@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +47,13 @@ Route::middleware([
     
 ])->group(function () {
 
+    foreach (File::allFiles(base_path('routes'.DS.'Authorized')) as $partial) {
+        require_once $partial->getPathname();
+    }
+    // use App\Http\Controllers\User\UserController;
+
+
+// Route::resource('users', \App\Http\Controllers\User\UserController::class);
     
         //Dashboard
         Route::get('/dashboard', function () {
