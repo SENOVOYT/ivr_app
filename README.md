@@ -64,3 +64,40 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Setup
+
+- Open up your terminal and clone the project
+```console
+    hcastellanos@kurai:~$ git clone http://hcastellanos@10.21.0.240:7990/scm/ivr/webapp_boilerplate.git
+```
+- Enter the project and create a .env file 
+```console
+    hcastellanos@kurai:~$ cd webapp_boilerplate/
+    hcastellanos@kurai:~$ cp .env-example .env
+```
+- Once .env file is created, run docker-compose up to start the container
+```console
+    hcastellanos@kurai:~$ docker-compose up
+```
+- Once images are setup, Enter the container to finalize setup. Note 00 should be replace based on your container id
+
+```console
+    hcastellanos@kurai:~$ docker exec -it 00 bash
+```
+
+- Once inside the container run these commands and the project should be up and running
+```console
+    root@00000000000:~$ composer install
+    root@00000000000:~$ php artisan key:generate
+    root@00000000000:~$ npm install
+    root@00000000000:~$ php artisan migrate
+    root@00000000000:~$ php artisan seed
+```
+- **NOTE** in development, one might need to run ```npm run dev``` to complie the javascript assets. This must be done in the container.
+```console
+    root@00000000000:~$ php artisan key:generate
+```
+
+
+

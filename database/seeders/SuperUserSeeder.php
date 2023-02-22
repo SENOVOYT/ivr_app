@@ -19,9 +19,9 @@ class SuperUserSeeder extends Seeder
     {
         //
         $current_date_time = \Carbon\Carbon::now()->toDateTimeString();
-        $user = User::create([
-            'name' => 'SuperUser',
-            'email' => 'superuser@gmail.com',
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@speednet-wireless.com',
             'email_verified_at' => $current_date_time,
             'password' => Hash::make('superuser@gmail.com'),
             'user_rested_by_admin' =>$current_date_time,

@@ -10,8 +10,20 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-label for="first_name" value="{{ __('First Name') }}" />
+                <x-jet-input id="first_name" class="block mt-1 w-full" type="text" name="first_name" :value="old('first_name')" required autofocus autocomplete="first_name" />
+            </div>
+            <div>
+                <x-jet-label for="middle_name" value="{{ __('Middle Name') }}" />
+                <x-jet-input id="middle_name" class="block mt-1 w-full" type="text" name="middle_name" :value="old('middle_name')"  autofocus autocomplete="middle_name" />
+            </div>
+            <div>
+                <x-jet-label for="last_name" value="{{ __('Last Name') }}" />
+                <x-jet-input id="last_name" class="block mt-1 w-full" type="text" name="last_name" :value="old('last_name')" required autofocus autocomplete="last_name" />
+            </div>
+            <div>
+                <x-jet-label for="user_name" value="{{ __('User Name') }}" />
+                <x-jet-input id="user_name" class="block mt-1 w-full" type="text" name="user_name" :value="old('user_name')" required autofocus autocomplete="user_name" />
             </div>
 
             <div class="mt-4">
@@ -29,7 +41,7 @@
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())    
                 <div class="mt-4">
                     <x-jet-label for="terms">
                         <div class="flex items-center">
