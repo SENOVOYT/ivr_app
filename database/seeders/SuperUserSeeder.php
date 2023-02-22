@@ -20,15 +20,21 @@ class SuperUserSeeder extends Seeder
         //
         $current_date_time = \Carbon\Carbon::now()->toDateTimeString();
         User::create([
-            'name' => 'admin',
-            'email' => 'admin@speednet-wireless.com',
+            'user_name' => 'superuser',
+            'first_name' =>'superuser',
+            'middle_name' => 'superuser',
+            'last_name' => 'superuser',
+            'email' => 'superuser@gmail.com',
             'email_verified_at' => $current_date_time,
             'password' => Hash::make('superuser@gmail.com'),
             'user_rested_by_admin' =>$current_date_time,
         ])->assignRole('superuser');
         
         User::create([
-            'name' => 'supervisor',
+            'user_name' => 'supervisor',
+            'first_name' =>'supervisor',
+            'middle_name' => 'supervisor',
+            'last_name' => 'supervisor',
             'email' => 'supervisor@gmail.com',
             'email_verified_at' => $current_date_time,
             'password' => Hash::make('supervisor@gmail.com'),
