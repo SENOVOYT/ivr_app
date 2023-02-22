@@ -16,7 +16,7 @@ class SeeCategoryLink extends ModalComponent
     }
     public function render()
     {
-        $this->link=UserLinks::where('category',$this->category)->get();
+        $this->link=UserLinks::with('permission')->where('category_id',$this->category)->get();
         return view('livewire.see-category-link');
     }
     /**

@@ -79,7 +79,7 @@ class CreateCustomLink extends Component
 
         UserLinks::create([
             'custom_link_name' => $this->custom_link_name,
-            'link' => $this->link_name[0]
+            'permission_id' => $this->link_name[0]
         ]);
         
         $this->custom_link_name=null;

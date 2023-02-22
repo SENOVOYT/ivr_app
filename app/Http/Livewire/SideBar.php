@@ -10,11 +10,12 @@ use Livewire\Component;
 class SideBar extends Component
 {
     protected $listeners = ['refreshsidebar' => '$refresh'];
-
+    public $userlink;
     
     public function render()
     {
                 
-        return view('livewire.side-bar', ['sidebar' => UserCategory::orderBy('position')->get()] );
+        $this->userlink = UserCategory::with('userlink')->orderBy('position')->get();
+        return view('livewire.side-bar', ['sidebar' => $this->userlink ] );
     }
 }

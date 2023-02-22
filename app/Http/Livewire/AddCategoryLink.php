@@ -31,7 +31,7 @@ class AddCategoryLink extends ModalComponent
         }else{
 
             $this->addlinks=UserLinks::where('custom_link_name', 'LIKE', '%'. $this->addsearch ."%")
-            ->where('category', null)
+            ->where('category_id', null)
             ->limit(15)
             ->get();
 
@@ -80,13 +80,13 @@ class AddCategoryLink extends ModalComponent
             return 0;
         }
 
-        $last_id=UserLinks::where('category',$this->category)
+        $last_id=UserLinks::where('category_id',$this->category)
         ->latest('position')
         ->first();
 
         UserLinks::where('id',$this->addlink_name[0])
         ->update([
-            'category' => $this->category,
+            'category_id' => $this->category,
             'position' => $last_id? $last_id->position + 1 : 1
 
         ]);
