@@ -10,9 +10,6 @@ fi
 
 chmod -R ugo+rw /.composer
 
-cd /webapp_boilerplate
-composer install -y
-npm install -y 
 
 if [ $# -gt 0 ]; then
     exec gosu $WWWUSER "$@"
