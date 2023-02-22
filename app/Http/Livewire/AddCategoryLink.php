@@ -92,5 +92,6 @@ class AddCategoryLink extends ModalComponent
         ]);
         $this->addsearch="";
         $this->emit('addedlink');
+        $this->emit('refreshsidebar');
     }
 }
