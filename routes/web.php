@@ -44,7 +44,7 @@ Route::middleware([
 
         Route::get('/editsidebar', function () {
             return view('edit-sidebar');
-        })->name('editsidebar');
+        })->name('editsidebar')->middleware('permission:edit_sidebar');
     
         //Permissions
         Route::group(['middleware' => ['permission:user_create']], function () {

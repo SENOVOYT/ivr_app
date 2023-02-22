@@ -72,6 +72,10 @@ class PermissionsSeeder extends Seeder
             13 => [
                 'permissions' => 'role_delete',
             ],
+            14 => [
+                'permissions' => 'edit_sidebar',
+                'link' => '/editsidebar'
+            ],
             
                       
         ];
