@@ -2,7 +2,7 @@
     <x-slot name="header">
 
         <h2 class="font-semibold text-xl leading-tight">
-            {{ __('Edit Sidebar') }}
+            {{ __('User Management') }}
             
         </h2>
 

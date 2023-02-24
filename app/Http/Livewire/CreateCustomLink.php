@@ -25,7 +25,7 @@ class CreateCustomLink extends Component
     public function render()
     {
         
-        if($this->search==''){
+        if($this->search==''||$this->search==""){
             $this->links=[];
             $this->link_name="";
             
@@ -49,7 +49,13 @@ class CreateCustomLink extends Component
 
 
     public function save(){
-
+        if($this->link_name==""){
+            
+            session()->flash('create_custom_link_error', "Select a link");
+            $this->link_name="";
+            $this->emit('create_custom_link_error');
+            return 0;
+        }
 
         if(count($this->link_name)>1){
             

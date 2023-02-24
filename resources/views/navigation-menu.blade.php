@@ -33,14 +33,18 @@
           <div>
             <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="">
+              <img class="h-8 w-8 rounded-full" src="@if ( Auth::user()->profile_photo_url =="https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF")
+              https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF&name={{ Auth::user()->first_name }} 
+              @else
+              {{ Auth::user()->profile_photo_url }}
+              @endif" alt="">
             </button>
           </div>
 
           <div class="absolute hidden right-0 z-10 mt-2 w-48 origin-top-right  py-1  ring-1 ring-black ring-opacity-5 focus:outline-none      text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
             <!-- Active: "bg-gray-100", Not Active: "" -->
             <div class="px-4 py-3">
-               <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
+               <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->first_name }}</span>
                <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
              </div>
             <li>
@@ -87,9 +91,14 @@
         
         <ul class="space-y-2">
           <div class="flex items-center p-2 mt-1 mb-2 space-x-4 justify-self-end">
-          <img src="{{ Auth::user()->profile_photo_url }}" alt="" class="w-12 h-12 rounded-lg dark:bg-gray-500">
+          <img src='
+          @if ( Auth::user()->profile_photo_url =="https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF")
+          https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF&name={{ Auth::user()->first_name }} 
+          @else
+          {{ Auth::user()->profile_photo_url }}
+          @endif' alt="" class="w-12 h-12 rounded-lg dark:bg-gray-500">
           <div>
-            <h2 class="text-lg font-semibold dark:text-white">{{ Auth::user()->name }}</h2>
+            <h2 class="text-lg font-semibold dark:text-white"> {{ Auth::user()->first_name }} </h2>
             <span class="flex items-center space-x-1">
               <h1 class="text-xs dark:text-gray-100">{{ Auth::user()->email }}</h1>
             </span>
@@ -150,7 +159,11 @@
       </div>
       @endif
       <button type="button" data-dropdown-toggle="language-dropdown" class="inline-flex justify-center p-2 text-gray-500 rounded cursor-pointer dark:hover:text-white dark:text-gray-400 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-600">
-        <img src="{{ Auth::user()->profile_photo_url }}" class="h-5 w-5 rounded-full mt-0.5" alt="">
+        <img src="@if ( Auth::user()->profile_photo_url =="https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF")
+        https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF&name={{ Auth::user()->first_name }} 
+        @else
+        {{ Auth::user()->profile_photo_url }}
+        @endif" class="h-5 w-5 rounded-full mt-0.5" alt="">
       </button>
       <!-- Dropdown -->
       <div class="hidden z-50 my-4 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700" id="language-dropdown">

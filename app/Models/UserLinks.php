@@ -16,9 +16,9 @@ class UserLinks extends Model
     {
         return $this->belongsTo(Permission::class);
     }
-    public function category(): BelongsTo
+    public function usercategory(): BelongsTo
     {
-        return $this->belongsTo(UserCategory::class);
+        return $this->belongsTo(UserCategory::class,'category_id');
     }
 
 }
