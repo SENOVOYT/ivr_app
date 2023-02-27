@@ -5,28 +5,35 @@ namespace App\Http\Livewire\User;
 use App\Models\User as UserModel;
 
 use Livewire\Component;
+use Livewire\WithPagination;
+use App\Models\Session;
+use App\Traits\WithSorting;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Component
 {
+    use WithPagination;
+    use WithSorting;
 
-    // public User $users;
-    public $search= "";
+    public $search = "";
 
-    protected $queryString = ['search'];
+    protected $queryString = ['search', 'sortBy'];
 
-    // protected string $tabeName = 'users';
+    protected $paginationTheme = 'tailwind';
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        // $user = UserModel::when(!empty($this->search), function ($query) {
-        //     $query->where('user_name', 'LIKE', '%' . $this->search . '%');
-        // })->get();
-
-        $users = UserModel::where('user_name', 'LIKE', '%' . $this->search . '%')->get();
-
         return view(
             'livewire.user.users',
-            ['users' => $users]
+            ['users' => UserModel::with('sessions')
+                ->where('user_name', 'LIKE', '%' . $this->search . '%')
+                ->orderby($this->sortBy ?? 'email_verified_at', $this->sortDirection)
+                ->paginate(25)]
         );
     }
 }

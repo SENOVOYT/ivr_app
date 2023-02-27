@@ -24,13 +24,13 @@
     <div class="overflow-auto">
         <x-table class=" table-auto overflow-x-scroll">
             <x-slot name="head">
-                <x-table.header>
+                <x-table.header sortable wire:click="sortBy('first_name')" :direction="$sortBy== 'first_name' ? $sortDirection : null">
                     {{ __('Full Name') }}
                 </x-table.header>
-                <x-table.header>
+                <x-table.header sortable wire:click="sortBy('user_name')" :direction="$sortBy == 'user_name' ? $sortDirection : null">
                     {{ __('User Name') }}
                 </x-table.header>
-                <x-table.header>
+                <x-table.header sortable wire:click="sortBy('email')" :direction="$sortBy == 'email' ? $sortDirection : null">
                     {{ __('Email') }}
                 </x-table.header>
                 <x-table.header class="text-center">
@@ -75,6 +75,7 @@
                         </x-table.cell>
                         <x-table.cell class="text-center">
                             <button
+                                onclick="Livewire.emit('openModal','user.edit-users')"
                                 class="rounded-lg px-3 py-1 border-solid border-2 border-yellow-600 text-white bg-yellow-600 font-bold dark:bg-gray-800 dark:text-yellow-600">
                                 {{ __('Action') }}
                             </button>
@@ -83,5 +84,6 @@
                 @endforeach
             </x-slot>
         </x-table>
+        {{$users->links()}}
     </div>
 </div>
