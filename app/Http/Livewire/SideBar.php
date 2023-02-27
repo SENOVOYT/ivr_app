@@ -15,8 +15,8 @@ class SideBar extends Component
 
     public function render()
     {
-        $this->user_id = Auth::user()->getId();
-        $this->sidebar=DB::table('user_categories')->where('user',$this->user_id)->orderBy('position')->get();
+        // $this->user_id = Auth::user()->getId();
+        $this->sidebar=DB::table('user_categories')->where('user',auth()->user()->id)->orderBy('position')->get();
         
         return view('livewire.side-bar',['sidebar' => $this->sidebar]);
     }
