@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('icons', function (Blueprint $table) {
             $table->id();
             $table->string('icon_name');
-            $table->string('icon_path');
+            $table->string('icon_path')->nullable();
             $table->timestamps();
         });
     }

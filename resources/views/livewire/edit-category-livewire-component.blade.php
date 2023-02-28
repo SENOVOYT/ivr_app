@@ -1,5 +1,6 @@
 
 <div x-data="{}" class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    @isset($link[0]['usercategory']['category_name'])
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -15,10 +16,13 @@
             </tr>
         </thead>
         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+           
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 {{ $link[0]['usercategory']['category_name'] }}
               
-            </th>
+            </th> 
+           
+            
             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                 <button wire:click="$emit('openModal','delete-category-link')" class="inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"> 
                     Edit
@@ -32,6 +36,7 @@
         <tbody>
         </tbody>
     </table>
+    @endisset
     
     <button wire:click="forceclosed" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" >
         <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
@@ -108,7 +113,7 @@
             </tr>
             @empty
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th colspan="2" scope="row" class="px-6 text-center center py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th colspan="3" scope="row" class="px-6 text-center center py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     No Custom Links Have Been Added
                 </th>
                 

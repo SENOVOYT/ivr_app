@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call(PermissionsSeeder::class);
         $this->call(SuperUserSeeder::class);
+        $this->call(icons::class);
     }
 }
