@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string<int, string>
      */
     protected $fillable = [
-        'first_name','last_name','user_name', 'email', 'password',
+        'first_name', 'last_name', 'user_name', 'email', 'password',
     ];
 
     /**
@@ -53,6 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_seen'=>'date'
     ];
 
     /**
@@ -62,6 +64,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $appends = [
         'profile_photo_url',
+        'full_name'
     ];
     
     protected function firstName(): Attribute
@@ -72,4 +75,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
    
 
+
+    public function getFullNameAttribute()
+    {
+        return ucwords("{$this->first_name}  {$this->middle_name} {$this->last_name}");
+    }
+
+    public function sessions(){
+        if (config('session.driver') !== 'database') {
+            return collect();
+        }
+
+        return $this->hasMany(Session::class);
+    }
 }
