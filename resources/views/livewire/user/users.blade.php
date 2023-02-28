@@ -18,7 +18,7 @@
 
         <div class="inline-flex overflow-hidden">
             <button
-                class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-xs text-white uppercase transition-colors duration-200 bg-black rounded-md shrink-0 sm:w-auto gap-x-2 mr-2 dark:bg-gray-900">{{ __('Add User') }}</button>
+                class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white uppercase transition-colors duration-200 bg-black rounded-md shrink-0 sm:w-auto gap-x-2 mr-2 dark:bg-gray-900">{{ __('Add User') }}</button>
         </div>
     </div>
     <div class="overflow-auto">

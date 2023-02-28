@@ -1,5 +1,8 @@
 <?php
-
+if (!defined('DS')) {
+    define('DS', DIRECTORY_SEPARATOR);
+}
+use Illuminate\Support\Facades\File;
 use App\Http\Controllers\RestedController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,7 +39,9 @@ Route::middleware([
         'rested'
     ])->group(function () {
 
-
+        foreach (File::allFiles(base_path('routes'.DS.'Authorized')) as $partial) {
+            require_once $partial->getPathname();
+        }
         //Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard');
