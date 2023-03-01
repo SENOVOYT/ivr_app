@@ -3,8 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\UserCategory;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 use Livewire\Component;
 
 class SideBar extends Component

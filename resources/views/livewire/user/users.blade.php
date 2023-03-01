@@ -11,15 +11,19 @@
                     </svg>
                 </span>
 
-                <input wire:model="search" type="text" placeholder="Search"
+                <input wire:model.debounce.700ms="search" type="text" placeholder="Search"
                     class="block w-full py-1.5 pr-5 text-gray-700 bg-white border border-gray-200 rounded-lg md:w-80 placeholder-gray-400/70 pl-11 rtl:pr-11 rtl:pl-5 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
             </div>
         </div>
 
         <div class="inline-flex overflow-hidden">
             <button
-                class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white uppercase transition-colors duration-200 bg-black rounded-md shrink-0 sm:w-auto gap-x-2 mr-2 dark:bg-gray-900">{{ __('Add User') }}</button>
-        </div>
+            onclick="Livewire.emit('openModal', 'user.add-user-livewire-componenet')"
+                class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white uppercase transition-colors duration-200 bg-black rounded-md shrink-0 sm:w-auto gap-x-2 mr-2 dark:bg-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                {{ __('Add User') }}
+            </button>
+            </div>
     </div>
     <div class="overflow-auto">
         <x-table class=" table-auto overflow-x-scroll">
@@ -33,7 +37,7 @@
                 <x-table.header sortable wire:click="sortBy('email')" :direction="$sortBy == 'email' ? $sortDirection : null">
                     {{ __('Email') }}
                 </x-table.header>
-                <x-table.header class="text-center">
+                <x-table.header >
                     {{ __('Status') }}
                 </x-table.header>
                 <x-table.header class="text-center">
@@ -60,25 +64,19 @@
                         </x-table.cell>
                         <x-table.cell class="place-content-center text-center">
                             @if ($user->sessions->count())
-                                <button
-                                    class="uppercase rounded-lg px-3 py-1 border-solid border-2 border-black-100 text-green-800 font-bold border-green-600 dark:border-green-800 dark:text-green-600 dark:bg-gray-800">
-                                    {{ __('Online') }}
-                                </button>
+                            <div class="flex dark:text-gray-50 items-center ">
+                                <div class="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div> Online
+                            </div>
                             @else
-                                <button
-                                    class=" uppercase rounded-lg px-3 py-1 border-solid border-2 border-black-100  text-red-800
-                            font-bold border-red-600
-                        dark:border-red-800 dark:text-red-600 dark:bg-gray-800">
-                                    {{ __('Offline') }}
-                                </button>
+                            <div class="flex dark:text-gray-50 items-center">
+                                <div class="h-2.5 w-2.5  rounded-full bg-red-500 mr-2"></div> Offline
+                            </div>
                             @endif
                         </x-table.cell>
                         <x-table.cell class="text-center">
-                            <button
-                                onclick="Livewire.emit('openModal','user.edit-users')"
-                                class="rounded-lg px-3 py-1 border-solid border-2 border-yellow-600 text-white bg-yellow-600 font-bold dark:bg-gray-800 dark:text-yellow-600">
-                                {{ __('Action') }}
-                            </button>
+                            
+                            <a href="/user/{{ $user->id }}/edit" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                        </td>
                         </x-table.cell>
                     </x-table.row>
                 @endforeach

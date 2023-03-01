@@ -35,11 +35,7 @@
 
                 <!-- Current Profile Photo -->
                 <div class="mt-2" x-show="! photoPreview">
-                    <img src="@if ( Auth::user()->profile_photo_url =="https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF")
-                    https://ui-avatars.com/api/?name=&color=7F9CF5&background=EBF4FF&name={{ Auth::user()->first_name }} 
-                    @else
-                    {{ Auth::user()->profile_photo_url }}
-                    @endif" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">
                 </div>
 
                 <!-- New Profile Photo Preview -->

@@ -6,9 +6,7 @@ use App\Models\User as UserModel;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Session;
 use App\Traits\WithSorting;
-use Illuminate\Support\Facades\DB;
 
 class Users extends Component
 {
@@ -17,14 +15,10 @@ class Users extends Component
 
     public $search = "";
 
-    protected $queryString = ['search', 'sortBy'];
+    // protected $queryString = ['search', 'sortBy'];
 
     protected $paginationTheme = 'tailwind';
 
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
 
     public function render()
     {
