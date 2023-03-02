@@ -29,10 +29,7 @@
         @livewireStyles
     </head>
     <body id="main">
-        <div>
-
-    
-       
+        <div>      
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900 ">
             
