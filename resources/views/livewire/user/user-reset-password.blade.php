@@ -14,7 +14,7 @@
     <x-slot name="content" >
         
         <div class="max-w-xl text-sm text-gray-600 dark:text-white">
-            {{ __('Once the account is verified the user will be able to access the system resources.') }}
+            {{ __('The Password of the user will be rested to user\'s email. Once the account login, the user will be promted to enter a new password.') }}
         </div>
 
         <div class="mt-5">
