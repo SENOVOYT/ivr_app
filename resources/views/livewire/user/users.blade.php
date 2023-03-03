@@ -25,8 +25,9 @@
             </button>
             </div>
     </div>
-    <div class="overflow-auto">
-        <x-table class=" table-auto overflow-x-scroll">
+    <div >
+        <div class="overflow-y-auto  max-h-96" >
+        <x-table class="">
             <x-slot name="head">
                 <x-table.header sortable wire:click="sortBy('first_name')" :direction="$sortBy== 'first_name' ? $sortDirection : null">
                     {{ __('Full Name') }}
@@ -44,7 +45,8 @@
                     {{ __('Action') }}
                 </x-table.header>
             </x-slot>
-            <x-slot name="body">
+            <x-slot name="body" >
+                
                 @foreach ($users as $user)
                     <x-table.row>
                         <x-table.cell>
@@ -82,6 +84,7 @@
                 @endforeach
             </x-slot>
         </x-table>
+        </div>
         {{$users->links()}}
     </div>
 </div>
