@@ -28,7 +28,7 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body id="main">
+    <body class=" scrollbar-thin scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-track-slate-200 scrollbar-thumb-blue-500 dark:scrollbar-track-slate-800 dark:scrollbar-thumb-slate-500" id="main">
         <div>      
 
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900 ">

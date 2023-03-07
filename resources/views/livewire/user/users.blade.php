@@ -17,16 +17,17 @@
         </div>
 
         <div class="inline-flex overflow-hidden">
-            <button
-            onclick="Livewire.emit('openModal', 'user.add-user-livewire-componenet')"
-                class="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white uppercase transition-colors duration-200 bg-black rounded-md shrink-0 sm:w-auto gap-x-2 mr-2 dark:bg-gray-900">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-                {{ __('Add User') }}
-            </button>
+            <a data-tooltip-target="add-user" onclick="Livewire.emit('openModal', 'user.add-user-livewire-componenet')" 
+            class="inline-flex justify-center p-1 ml-auto text-gray-500 rounded cursor-pointer dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-900">
+                <svg xmlns="http://www.w3.org/2000/svg"   class="h-6 w-6 " enable-background="new 0 0 24 24" viewBox="0 0 24 24" fill="currentColor"><g><rect fill="none" height="24" width="24"/><rect fill="none" height="24" width="24"/></g><g><g><circle cx="9" cy="8" r="4"/><path d="M9,14c-2.67,0-8,1.34-8,4v1c0,0.55,0.45,1,1,1h14c0.55,0,1-0.45,1-1v-1C17,15.34,11.67,14,9,14z"/><polygon points="20,10 20,7 18,7 18,10 15,10 15,12 18,12 18,15 20,15 20,12 23,12 23,10"/></g></g></svg>
+            </a>
+                <div id="add-user" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-600">
+                    Add User
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
             </div>
     </div>
     <div >
-        <div class="overflow-y-auto  max-h-96" >
         <x-table class="">
             <x-slot name="head">
                 <x-table.header sortable wire:click="sortBy('first_name')" :direction="$sortBy== 'first_name' ? $sortDirection : null">
@@ -84,7 +85,7 @@
                 @endforeach
             </x-slot>
         </x-table>
-        </div>
+        
         {{$users->links()}}
     </div>
 </div>

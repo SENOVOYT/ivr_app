@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class AuthorizationPermission extends Component
 {
+    public $search_permission;
     public function render()
     {
         return view('livewire.authorization.authorization-permission');

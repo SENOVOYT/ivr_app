@@ -42,11 +42,15 @@ Route::middleware([
         foreach (File::allFiles(base_path('routes'.DS.'Authorized')) as $partial) {
             require_once $partial->getPathname();
         }
+        Route::get('/edit-sidebar', function () {
+            return view('side-bar.index');
+        })->name('edit-menu');
+
         //Dashboard
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
-
+        
         Route::get('/editsidebar', function () {
             return view('edit-sidebar');
         })->name('editsidebar')->middleware('permission:edit_sidebar');
