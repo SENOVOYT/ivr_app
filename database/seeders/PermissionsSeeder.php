@@ -79,20 +79,20 @@ class PermissionsSeeder extends Seeder
             
                       
         ];
-        foreach ($permissions as $permissions){
+        // foreach ($permissions as $permissions){
             
-            if(isset($permissions['link'])&&!empty($permissions['link'])){
-                Permission::create([
-                    'name' => $permissions['permissions'],
-                    'link' => $permissions['link']
-                ]);
-            }else{
-                Permission::create([
-                    'name' => $permissions['permissions']
-                ]);
-            }
+        //     if(isset($permissions['link'])&&!empty($permissions['link'])){
+        //         Permission::create([
+        //             'name' => $permissions['permissions'],
+        //             'link' => $permissions['link']
+        //         ]);
+        //     }else{
+        //         Permission::create([
+        //             'name' => $permissions['permissions']
+        //         ]);
+        //     }
 
-        }
+        // }
 
         //gets all permissions via Gate::before rule: see AuthServiceProvider
         Role::create(['name' => 'superuser']);
@@ -106,9 +106,9 @@ class PermissionsSeeder extends Seeder
             'view_log',
         ];
 
-        foreach ( $administratorPermissions as $permissions ){
-            $administrator->givePermissionTo($permissions);
-        }
+        // foreach ( $administratorPermissions as $permissions ){
+        //     $administrator->givePermissionTo($permissions);
+        // }
 
 
     }

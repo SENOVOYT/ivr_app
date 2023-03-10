@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string('uri');
             $table->string('name')->nullable();
             $table->string('actionname');
+            $table->integer('permission_id')->nullable()->unsigned();
             $table->timestamps();
+            $table->foreign('permission_id')->references('id')->on('permissions');
         });
     }
 

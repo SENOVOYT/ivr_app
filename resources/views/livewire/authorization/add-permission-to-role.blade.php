@@ -62,7 +62,7 @@
 
         
         </div>
-        <label for="permission" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Permission List to Add</label>
+        <label for="permission" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Permission List to be added to </label>
 <div class="w-full mb-2 max-h-36 overflow-y-auto text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white">
     
     <div class="flex p-2 flex-wrap gap-1">
