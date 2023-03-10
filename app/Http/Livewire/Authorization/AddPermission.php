@@ -3,9 +3,11 @@
 namespace App\Http\Livewire\Authorization;
 
 use App\Models\link;
+use App\Models\Permission;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use LivewireUI\Modal\ModalComponent;
-use Spatie\Permission\Models\Permission;
+
 
 class AddPermission extends ModalComponent
 {
@@ -45,20 +47,19 @@ class AddPermission extends ModalComponent
             session()->flash('error', 'The Route field is required.');
             $this->emit('error');
         }
-        $id=Permission::insertGetId([
+        
+        $id= Permission::create([
             'name' => $this->permission_name,
-            'guard_name' => 'web',
-            'created_at' => date("Y-m-d H:i:s"),
-            'updated_at' => date("Y-m-d H:i:s")
         ]);
-        link::where('id',$this->permission_id['id'])->update(['permission_id' => $id]);
-
+        link::where('id',$this->permission_id['id'])->update(['permission_id' => $id->id]);
+        
 
         $this->emit('addedlink');
         $this->search=null;
         $this->permission_id=null;
         $this->permission_name=null;
         $this->emit('AuthorizationPermission');
+        
         return 0;
         
     }
